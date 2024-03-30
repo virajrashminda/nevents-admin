@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "12790717908",
+    "project_id": "nevents-final",
+    "storage_bucket": "nevents-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12790717908:android:8834876501d7c351f60a41",
+        "android_client_info": {
+          "package_name": "com.example.nevent_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_HjBa8DcZm7MM7gM1Y_OrLPD_10iuXfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12790717908:android:ee7e4fc6bad1e833f60a41",
+        "android_client_info": {
+          "package_name": "com.example.nevents_admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_HjBa8DcZm7MM7gM1Y_OrLPD_10iuXfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
