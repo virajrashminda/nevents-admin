@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:nevents_admin/providers/user_provider.dart';
 import 'package:nevents_admin/resoureces/firestore_methods.dart';
 import 'package:nevents_admin/utils/utils.dart';
@@ -11,7 +9,7 @@ import 'package:provider/provider.dart';
 
 class addpost extends StatefulWidget {
   final Uint8List? file;
-  const addpost({Key? key, required this.file}) : super(key: key);
+  const addpost({super.key, required this.file});
 
   @override
   State<addpost> createState() => _addpostState();
@@ -119,10 +117,7 @@ class _addpostState extends State<addpost> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      //CircleAvatar(
-                      // backgroundImage: NetworkImage(
-                      //'https://img.freepik.com/free-vector/university-background-flat-style_23-2147760414.jpg?t=st=1710784481~exp=1710788081~hmac=a6b336a99e973376f74c42dc6b5b6282bc63a959ff6aa762a0910e0ac9384e83&w=740'),
-                      //),
+                     
                       const SizedBox(
                         height: 30,
                       ),

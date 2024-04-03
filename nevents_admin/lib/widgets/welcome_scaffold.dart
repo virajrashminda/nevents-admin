@@ -6,9 +6,7 @@ class welcomescafold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
-
         backgroundColor: Colors.white,
         elevation: 0,
       ),
@@ -16,17 +14,14 @@ class welcomescafold extends StatelessWidget {
       body: Stack(
         children: [
           //Image.asset(//'assets/images/Nevents back.png',
-          
-           // fit: BoxFit.cover,
-           // height: double.infinity,
-           // width: double.infinity,
-         // ),
-         SafeArea(
-            child: child!
-          ),
+
+          // fit: BoxFit.cover,
+          // height: double.infinity,
+          // width: double.infinity,
+          // ),
+          SafeArea(child: child!),
         ],
       ),
-      
     );
   }
 }

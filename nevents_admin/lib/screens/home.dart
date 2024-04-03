@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,6 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-  //fetching user data not work properly whatch te video from 2.30
   @override
   int _page = 0;
   late PageController pageController;
@@ -48,9 +46,7 @@ class _homeState extends State<home> {
   Widget build(BuildContext context) {
     final user = Provider.of<userprovider?>(context)?.getUser;
     if (user != null) {
-    } else {
-      
-    }
+    } else {}
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -59,7 +55,6 @@ class _homeState extends State<home> {
           'assets/Nevents.svg',
           height: 50,
         ),
-        
       ),
       body: Center(
           child: PageView(
@@ -71,9 +66,7 @@ class _homeState extends State<home> {
             _page = page;
           });
         },
-      )
-          //Text(user?.email??'user name not available',style: TextStyle(color: Colors.black),),
-          ),
+      )),
       bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.transparent,
           buttonBackgroundColor: Color.fromARGB(255, 68, 169, 0),
@@ -82,7 +75,6 @@ class _homeState extends State<home> {
           items: const [
             Icon(Icons.home, size: 26, color: Colors.white),
             Icon(Icons.add_circle, size: 26, color: Colors.white),
-            Icon(Icons.notifications, size: 26, color: Colors.white),
             Icon(Icons.person, size: 26, color: Colors.white),
           ],
           onTap: navigationtap),

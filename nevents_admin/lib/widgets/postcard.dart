@@ -1,18 +1,14 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:nevents_admin/models/admin.dart';
 import 'package:nevents_admin/providers/user_provider.dart';
 import 'package:nevents_admin/resoureces/firestore_methods.dart';
 import 'package:nevents_admin/screens/comments.dart';
 import 'package:nevents_admin/utils/utils.dart';
 import 'package:nevents_admin/widgets/like_animation.dart';
-import 'package:nevents_admin/widgets/poll.dart';
 import 'package:provider/provider.dart';
 
 class postcard extends StatefulWidget {
@@ -186,7 +182,7 @@ class _postcardState extends State<postcard> {
               alignment: Alignment.center,
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.60,
+                  height: MediaQuery.of(context).size.height * 0.47,
                   width: double.infinity,
                   child: Image.network(
                     widget.snap['photourl'],
@@ -263,7 +259,7 @@ class _postcardState extends State<postcard> {
                           const Padding(
                             padding: EdgeInsets.all(16.0),
                             child: Text(
-                              'select your choice',
+                              'Student choices',
                               style: TextStyle(
                                 color: Colors.green,
                                 fontSize: 17,
@@ -271,16 +267,12 @@ class _postcardState extends State<postcard> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 5,
+                          const SizedBox(
+                            height: 15,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.circle),
-                              ),
                               const Text(
                                 'participating',
                                 style: TextStyle(
@@ -291,17 +283,19 @@ class _postcardState extends State<postcard> {
                               const SizedBox(
                                 width: 55,
                               ),
-                              Text('50')
+                              Text(
+                                '${widget.snap['participating'].length} ',
+                                style: const TextStyle(
+                                  color: Colors.black45,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
                             ],
                           ),
-                          const SizedBox(height: 8),
+                          const SizedBox(height: 18),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.circle),
-                              ),
                               const Text(
                                 'May be',
                                 style: TextStyle(
@@ -310,9 +304,15 @@ class _postcardState extends State<postcard> {
                                     color: Colors.black45),
                               ),
                               const SizedBox(
-                                width: 98,
+                                width: 99,
                               ),
-                              Text('35')
+                              Text(
+                                '${widget.snap['may be'].length} ',
+                                style: const TextStyle(
+                                  color: Colors.black45,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
                             ],
                           ),
                           const Row(

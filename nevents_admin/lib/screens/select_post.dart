@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nevents_admin/screens/addpost.dart';
@@ -109,7 +108,7 @@ class SelectPost extends StatelessWidget {
                 child: AspectRatio(
                   aspectRatio: 487 / 451,
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(
                           'https://t3.ftcdn.net/jpg/04/60/01/36/360_F_460013622_6xF8uN6ubMvLx0tAJECBHfKPoNOR5cRa.jpg',
@@ -127,9 +126,8 @@ class SelectPost extends StatelessWidget {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () => _selectImageToPost(context),
-                    
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:  Color.fromARGB(203, 68, 169, 0),
+                    backgroundColor: Color.fromARGB(203, 68, 169, 0),
                   ),
                   child: const Text(
                     '+ Add new post',

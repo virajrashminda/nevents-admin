@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class followbutton extends StatelessWidget {
+class signoutbutton extends StatelessWidget {
   final Function()? function;
-  final backgroundcolor;
-  final Color bordercolor;
-  final String text;
-  final Color textcolor;
-  const followbutton({
+
+  const signoutbutton({
     super.key,
-    required this.backgroundcolor,
-    required this.bordercolor,
-    required this.text,
-    required this.textcolor,
     this.function,
   });
 
@@ -24,22 +17,22 @@ class followbutton extends StatelessWidget {
         onPressed: function,
         child: Container(
           decoration: BoxDecoration(
-            color: backgroundcolor,
+            color: Colors.redAccent,
             border: Border.all(
-              color: bordercolor,
+              color: Colors.redAccent,
             ),
             borderRadius: BorderRadius.circular(20),
           ),
           alignment: Alignment.center,
-          child: Text(
-            text,
+          width: 210,
+          height: 35,
+          child: const Text(
+            'SIGN OUT',
             style: TextStyle(
-              color: textcolor,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
-          width: 210,
-          height: 35,
         ),
       ),
     );

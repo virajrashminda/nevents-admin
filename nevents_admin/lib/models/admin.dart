@@ -1,9 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class admin{
-  
-  
-
+class admin {
   final String adminname;
   final String uid;
   final String imageurl;
@@ -12,7 +9,6 @@ class admin{
   final List followwers;
 
   const admin({
-
     required this.adminname,
     required this.uid,
     required this.imageurl,
@@ -21,30 +17,25 @@ class admin{
     required this.bio,
   });
 
-  Map<String,dynamic> tojson() => {
+  Map<String, dynamic> tojson() => {
+        'admin name': adminname,
+        'uid': uid,
+        'imageurl': imageurl,
+        'email': email,
+        'followers': followwers,
+        'bio': bio,
+      };
 
-    'admin name':adminname,
-    'uid':uid,
-    'imageurl':imageurl,
-    'email':email,
-    'followers':followwers,
-    'bio':bio,
-  };
+  static admin fromsnap(DocumentSnapshot snap) {
+    var snapshot = snap.data() as Map<String, dynamic>;
 
-  
-
-  static admin fromsnap(DocumentSnapshot snap){
-    
-    var snapshot = snap.data() as Map<String,dynamic>;
-    
     return admin(
-      
-      adminname: snapshot['admin name']?? '',
-      uid: snapshot['uid']?? '',
-      followwers: snapshot['followers']??'',
-      email: snapshot['email']??'',
-      imageurl: snapshot['imageurl']??'',
-      bio: snapshot['bio']??'',
+      adminname: snapshot['admin name'] ?? '',
+      uid: snapshot['uid'] ?? '',
+      followwers: snapshot['followers'] ?? '',
+      email: snapshot['email'] ?? '',
+      imageurl: snapshot['imageurl'] ?? '',
+      bio: snapshot['bio'] ?? '',
     );
   }
 }

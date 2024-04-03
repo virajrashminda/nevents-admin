@@ -30,35 +30,37 @@ class _likeanimationState extends State<likeanimation>
       vsync: this,
       duration: Duration(microseconds: widget.duration.inMilliseconds ~/ 2),
     );
-    scale= Tween<double>(begin: 1,end: 1.2).animate(controller);
+    scale = Tween<double>(begin: 1, end: 1.2).animate(controller);
   }
 
   @override
   void didUpdateWidget(covariant likeanimation oldWidget) {
-    
     super.didUpdateWidget(oldWidget);
-    if(widget.isanimating!= oldWidget.isanimating){
-
+    if (widget.isanimating != oldWidget.isanimating) {
       startanimation();
     }
   }
-  startanimation()async{
-    if(widget.isanimating||widget.smalllike){
+
+  startanimation() async {
+    if (widget.isanimating || widget.smalllike) {
       await controller.forward();
       await controller.reverse();
-      await Future.delayed(const Duration(milliseconds: 600),);
+      await Future.delayed(
+        const Duration(milliseconds: 600),
+      );
 
-      if(widget.onend!=null){
+      if (widget.onend != null) {
         widget.onend!();
       }
     }
   }
+
   @override
   void dispose() {
-   
     super.dispose();
     controller.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return ScaleTransition(

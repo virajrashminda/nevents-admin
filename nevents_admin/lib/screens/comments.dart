@@ -69,7 +69,7 @@ class _commentsState extends State<comments> {
             children: [
               CircleAvatar(
                 backgroundImage: NetworkImage(
-                 widget.snap['imageurl']
+                user?.imageurl ?? '',
                 ),
                 radius: 18,
               ),
@@ -78,7 +78,7 @@ class _commentsState extends State<comments> {
                   padding: const EdgeInsets.only(left: 16, right: 8),
                   child: TextField(
                     controller: _commentcontroller,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Add a comment...',
                       border: InputBorder.none,
                     ),
@@ -92,6 +92,7 @@ class _commentsState extends State<comments> {
                     _commentcontroller.text,
                     user?.uid ?? '',
                     user?.adminname ?? '',
+                    user?.imageurl??'',
                   );
                   setState(() {
                     _commentcontroller.text = '';

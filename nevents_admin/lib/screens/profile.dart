@@ -4,12 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:nevents_admin/screens/addpost.dart';
+import 'package:nevents_admin/resoureces/auth_methods.dart';
+import 'package:nevents_admin/screens/login.dart';
 import 'package:nevents_admin/utils/utils.dart';
-import 'package:nevents_admin/widgets/follow_button.dart';
+import 'package:nevents_admin/widgets/singout_button.dart';
 
-//import 'package:flutter/widgets.dart';
 
 class profile extends StatefulWidget {
   final uid;
@@ -21,6 +20,7 @@ class profile extends StatefulWidget {
 
 class _profileState extends State<profile> {
   Uint8List? _file;
+  int followers = 0;
   var userdata = {};
   int postlen = 0;
   bool isloading = false;
@@ -49,6 +49,7 @@ class _profileState extends State<profile> {
           .get();
       postlen = postsnap.docs.length;
       userdata = usersnap.data()!;
+      followers = usersnap.data()!['followers'].length;
       setState(() {});
     } catch (e) {
       showSnackBar(
@@ -72,7 +73,9 @@ class _profileState extends State<profile> {
   Widget build(BuildContext context) {
     return isloading
         ? const Center(
-            child: CircularProgressIndicator(color:  Color.fromARGB(203, 68, 169, 0),),
+            child: CircularProgressIndicator(
+              color: Color.fromARGB(203, 68, 169, 0),
+            ),
           )
         : Scaffold(
             body: ListView(
@@ -111,7 +114,7 @@ class _profileState extends State<profile> {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 3,
                     ),
                     Row(
@@ -127,7 +130,7 @@ class _profileState extends State<profile> {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Row(
@@ -138,18 +141,21 @@ class _profileState extends State<profile> {
                         const SizedBox(
                           width: 23,
                         ),
-                        buildstatecolumn(1005, 'Followers'),
+                        buildstatecolumn(followers, 'Followers'),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        followbutton(
-                          text: 'edite',
-                          backgroundcolor: Color.fromARGB(203, 68, 169, 0),
-                          textcolor: Colors.white,
-                          bordercolor: Colors.black,
-                          function: () {},
+                        signoutbutton(
+                          function: () async {
+                            await authmethods().signOut();
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const login(),
+                              ),
+                            );
+                          },
                         ),
                       ],
                     )
@@ -164,7 +170,9 @@ class _profileState extends State<profile> {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
-                        child: CircularProgressIndicator(color:  Color.fromARGB(203, 68, 169, 0),),
+                        child: CircularProgressIndicator(
+                          color: Color.fromARGB(203, 68, 169, 0),
+                        ),
                       );
                     }
                     return GridView.builder(
